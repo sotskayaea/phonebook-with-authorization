@@ -1,0 +1,23 @@
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filterLabel {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #212121;
+}
+
+.filterInput {
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-left: 10px;
+  width: 100%;
+}
