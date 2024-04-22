@@ -1,84 +1,66 @@
-import ContactForm from './ContactForm/ContactForm';
-import Filter from './Filter/Filter';
-import ContactList from './ContactList/ContactList';
+import { Routes, Route } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
 import style from './App.module.css';
+import Navigation from './Navigation/Navigation';
+import UserMenu from './UserMenu/UserMenu';
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshUser } from '../redux/auth/operations';
+import { useAuth } from 'hooks';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
 
 const App = () => {
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const Login = lazy(() => import('../pages/Login/Login'));
+  const Phonebook = lazy(() => import('../pages/Phonebook/Phonebook'));
+  const Register = lazy(() => import('../pages/Register/Register'));
   return (
     <div className={style.phonebook}>
-      <h1 className={style.title}>Phonebook</h1>
-      <ContactForm />
-      <h2 className={style.subtitle}>Contacts</h2>
-      <Filter />
-      <ContactList />
+      <header className={style.header}>
+        <Navigation />
+        {isLoggedIn && <UserMenu />}
+      </header>
+
+      <Suspense fallback={<p>Loading...</p>}>
+        {isRefreshing ? (
+          <b>Refreshing user...</b>
+        ) : (
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <RestrictedRoute
+                  redirectTo="/phonebook"
+                  component={<Login />}
+                />
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute redirectTo="/" component={<Register />} />
+              }
+            />
+
+            <Route
+              path="/phonebook"
+              element={
+                <PrivateRoute redirectTo="/" component={<Phonebook />} />
+              }
+            />
+            <Route path="*" element={<Login />} />
+          </Routes>
+        )}
+      </Suspense>
     </div>
   );
 };
 
 export default App;
-// export class App extends Component {
-//   state = {
-//     contacts: [
-//       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-//       { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-//       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-//       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-//     ],
-//     filter: '',
-//   };
-//   componentDidMount() {
-//     const contacts = localStorage.getItem('contacts');
-//     const parsedContacts = JSON.parse(contacts);
-
-//     if (parsedContacts) {
-//       this.setState({ contacts: parsedContacts });
-//     }
-//   }
-
-//   componentDidUpdate(prevProps, prevState) {
-//     if (this.state.contacts.length !== prevState.contacts.length) {
-//       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-//     }
-//   }
-//   onAddContact = contactData => {
-//     this.setState({ contacts: [...this.state.contacts, contactData] });
-//   };
-
-//   onInputFilter = e => {
-//     this.setState({ filter: e.currentTarget.value });
-
-//     this.onCheckFilter(this.state.filter);
-//   };
-
-//   onCheckFilter = filter => {
-//     const filteredContacts = this.state.contacts.filter(item => {
-//       const contact = item.name.toLowerCase();
-//       return contact.includes(filter.toLowerCase());
-//     });
-
-//     return filteredContacts;
-//   };
-//   onDeleteContact = id => {
-//     return this.setState({
-//       contacts: this.state.contacts.filter(contact => contact.id !== id),
-//     });
-//   };
-//   render() {
-//     return (
-//       <>
-//         <h1>Phonebook</h1>
-//         <ContactForm
-//           onAddContact={this.onAddContact}
-//           contacts={this.state.contacts}
-//         />
-
-//         <h2>Contacts</h2>
-//         <Filter onInputFilter={this.onInputFilter} value={this.state.filter} />
-//         <ContactList
-//           contacts={this.onCheckFilter(this.state.filter)}
-//           onDeleteContact={this.onDeleteContact}
-//         />
-//       </>
-//     );
-//   }
-// }

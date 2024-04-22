@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'https://65fc7dd49fc4425c65303f94.mockapi.io/contacts';
+const API_URL = 'https://connections-api.herokuapp.com/contacts';
 
 class ContactsService {
   fetchContacts = async () => {
@@ -17,7 +17,10 @@ class ContactsService {
   };
 
   editContact = async newContact => {
-    const response = await axios.put(`${API_URL}/${newContact.id}`, newContact);
+    const response = await axios.patch(`${API_URL}/${newContact.id}`, {
+      name: newContact.name,
+      number: newContact.number,
+    });
     return response.data;
   };
 }

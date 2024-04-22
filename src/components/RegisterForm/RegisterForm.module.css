@@ -20,6 +20,7 @@
 }
 
 .input {
+  width: 100%;
   padding: 10px;
   font-size: 16px;
   line-height: 1.5;
@@ -47,4 +48,24 @@
   display: block;
   margin: auto;
   cursor: pointer;
+}
+.password_wrap {
+  position: relative;
+  /* width: 300px; */
+}
+
+.password_eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-30%);
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.password_icon {
+  width: 20px;
+  height: 20px;
 }

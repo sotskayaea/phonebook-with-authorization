@@ -1,4 +1,4 @@
-import { fetchAllContacts } from '../../redux/operations';
+import { fetchAllContacts } from '../../redux/contacts/operations';
 import { useEffect } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 import { useSelector, useDispatch } from 'react-redux';

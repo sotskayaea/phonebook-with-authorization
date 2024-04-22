@@ -21,11 +21,13 @@
 
 .input {
   padding: 10px;
+  padding-right: 30px;
   font-size: 16px;
   line-height: 1.5;
   border-radius: 6px;
   border: 1px solid #ccc;
   margin-top: 5px;
+  width: 100%;
   &::placeholder {
     color: #d9d9d9;
     font-weight: 400;
@@ -47,4 +49,25 @@
   display: block;
   margin: auto;
   cursor: pointer;
+}
+
+.password_wrap {
+  position: relative;
+  /* width: 300px; */
+}
+
+.password_eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-30%);
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.password_icon {
+  width: 20px;
+  height: 20px;
 }

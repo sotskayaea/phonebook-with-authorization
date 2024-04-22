@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { addContact } from '../../redux/operations';
+import { addContact } from '../../redux/contacts/operations';
 import style from './ContactForm.module.css';
 import { useDispatch } from 'react-redux';
 
@@ -16,7 +16,7 @@ const ContactForm = () => {
     const contactData = {
       id: nanoid(),
       name: name,
-      phone: number,
+      number: number,
     };
     const foundContact = contacts.find(
       contact => contact.name === contactData.name

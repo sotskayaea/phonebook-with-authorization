@@ -4,7 +4,7 @@ import {
   fetchAllContacts,
   deleteContact,
   editContact,
-} from '../../redux/operations';
+} from '../../redux/contacts/operations';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import cn from 'classnames';
@@ -13,7 +13,7 @@ const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [newName, setNewName] = useState(contact.name);
-  const [newPhone, setNewPhone] = useState(contact.phone);
+  const [newPhone, setNewPhone] = useState(contact.number);
 
   const deleteUpdateContacts = contactId => {
     dispatch(deleteContact(contactId)).then(() => {
@@ -28,7 +28,7 @@ const ContactItem = ({ contact }) => {
   const onCancelBtn = () => {
     setIsShowEditModal(false);
     setNewName(contact.name);
-    setNewPhone(contact.phone);
+    setNewPhone(contact.number);
   };
 
   const onSubmitEditForm = e => {
@@ -38,7 +38,7 @@ const ContactItem = ({ contact }) => {
     const newContact = {
       ...contact,
       name: newName,
-      phone: newPhone,
+      number: newPhone,
     };
 
     console.log(newContact);
@@ -54,7 +54,7 @@ const ContactItem = ({ contact }) => {
       <div className={style.contact_wrap}>
         <div className={style.name_wrap}>
           <p>{contact.name}</p>
-          <p>{contact.phone}</p>
+          <p>{contact.number}</p>
         </div>
         <ul className={style.updateButtons}>
           <li>
@@ -78,7 +78,11 @@ const ContactItem = ({ contact }) => {
         </ul>
       </div>
       <div className={style.drop_down}>
-        <form className={style.edit_form} onSubmit={onSubmitEditForm}>
+        <form
+          className={style.edit_form}
+          onSubmit={onSubmitEditForm}
+          autoComplete="none"
+        >
           <div className={style.input_wrap}>
             <div className={style.input_container}>
               <label htmlFor="name">Name:</label>
@@ -91,10 +95,10 @@ const ContactItem = ({ contact }) => {
               />
             </div>
             <div className={style.input_container}>
-              <label htmlFor="phone">Phone:</label>
+              <label htmlFor="number">Phone:</label>
               <input
                 type="tel"
-                id="phone"
+                id="number"
                 value={newPhone}
                 onChange={e => setNewPhone(e.target.value)}
                 className={style.input_field}
