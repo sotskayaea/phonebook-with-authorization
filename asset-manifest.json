@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/phonebook-with-authorization/static/css/main.d040bd1e.css",
+    "main.js": "/phonebook-with-authorization/static/js/main.7a2a1ffd.js",
+    "static/css/854.8716dda0.chunk.css": "/phonebook-with-authorization/static/css/854.8716dda0.chunk.css",
+    "static/js/854.bf0b8233.chunk.js": "/phonebook-with-authorization/static/js/854.bf0b8233.chunk.js",
+    "static/css/690.f55b1495.chunk.css": "/phonebook-with-authorization/static/css/690.f55b1495.chunk.css",
+    "static/js/690.186d4346.chunk.js": "/phonebook-with-authorization/static/js/690.186d4346.chunk.js",
+    "static/css/656.8e4caa12.chunk.css": "/phonebook-with-authorization/static/css/656.8e4caa12.chunk.css",
+    "static/js/656.b73b74dd.chunk.js": "/phonebook-with-authorization/static/js/656.b73b74dd.chunk.js",
+    "static/js/680.5d3eab3c.chunk.js": "/phonebook-with-authorization/static/js/680.5d3eab3c.chunk.js",
+    "static/media/password_close.png": "/phonebook-with-authorization/static/media/password_close.282c89b83bd77aac8d9d.png",
+    "static/media/password_open.png": "/phonebook-with-authorization/static/media/password_open.7920214a5bbec94c2377.png",
+    "static/media/edit.png": "/phonebook-with-authorization/static/media/edit.4b9a17bfa3882c68615a.png",
+    "index.html": "/phonebook-with-authorization/index.html",
+    "main.d040bd1e.css.map": "/phonebook-with-authorization/static/css/main.d040bd1e.css.map",
+    "main.7a2a1ffd.js.map": "/phonebook-with-authorization/static/js/main.7a2a1ffd.js.map",
+    "854.8716dda0.chunk.css.map": "/phonebook-with-authorization/static/css/854.8716dda0.chunk.css.map",
+    "854.bf0b8233.chunk.js.map": "/phonebook-with-authorization/static/js/854.bf0b8233.chunk.js.map",
+    "690.f55b1495.chunk.css.map": "/phonebook-with-authorization/static/css/690.f55b1495.chunk.css.map",
+    "690.186d4346.chunk.js.map": "/phonebook-with-authorization/static/js/690.186d4346.chunk.js.map",
+    "656.8e4caa12.chunk.css.map": "/phonebook-with-authorization/static/css/656.8e4caa12.chunk.css.map",
+    "656.b73b74dd.chunk.js.map": "/phonebook-with-authorization/static/js/656.b73b74dd.chunk.js.map",
+    "680.5d3eab3c.chunk.js.map": "/phonebook-with-authorization/static/js/680.5d3eab3c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d040bd1e.css",
+    "static/js/main.7a2a1ffd.js"
+  ]
+}
